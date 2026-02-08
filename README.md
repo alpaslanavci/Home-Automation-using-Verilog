@@ -1,35 +1,46 @@
 # EE241 Home Automation Project
 
 ## Description
-This project aims to implement a smart house system using Verilog HDL. With this project, we are trying to help residents control their house.  
-This project is managed by the following students: Alpaslan Avcı (20220701013), Adnan Tolga Aksoy (20220701011).
+This project implements a smart home system in Verilog HDL.
 
-## Implementations
+Project members:
+- Alpaslan Avcı (20220701013)
+- Adnan Tolga Aksoy (20220701011)
 
-The systems listed below will be implemented in our Home Automation System:
+## Subsystems
+- General management
+- Lighting control (luminosity + color)
+- Door control (password + lock/alarm behavior)
+- Climate control (AC mode + temperature selection)
+- Safety system (fire alarm + extinguisher trigger)
 
-  * General Management System
-    * Lighting Control
-    * Doors Control
-  * Climate Control System
-    * AC Control
-  * Safety System
-    * Fire Dedector and Fire Extinguish Systems
-    * Digital Door Locking
+## Source Layout
+- `AC_control.v`: AC-related modules (`temp_sel`, `AC_mode_selection`, `AC_control`)
+- `door_control.v`: door control and helper modules (`t_ff`, `freq_divider`, `counter`)
+- `fire.v`: fire detection state machine
+- `light_control.v`: light color and luminosity control
+- `top.v`: integration module (`top_module`)
 
-### General Management System
-It ensures that the general specifications of the house are able to be controlled. The following features are availables:
- * Turn on/off the lights.
- * Adjust the brightness and change the color of the lights.
+Testbenches:
+- `AC_control_tb.v`
+- `door_control_tb.v`
+- `fire_tb.v`
+- `ligt_control_tb.v`
+- `top_tb.v`
 
-### Climate Control System
-Controls systems that adjust the temperature of the house.
- * Turn on/off AC.
- * Set AC to any mode.
+## Vivado Simulation Flow (Windows)
+1. Open Vivado and create a new RTL project.
+2. Add source files:
+   - `AC_control.v`
+   - `door_control.v`
+   - `fire.v`
+   - `light_control.v`
+   - `top.v`
+3. Add one testbench as simulation source:
+   - `AC_control_tb.v` or `door_control_tb.v` or `fire_tb.v` or `ligt_control_tb.v` or `top_tb.v`
+4. Set the selected testbench as the simulation top.
+5. Run Behavioral Simulation.
 
-
-### Safety System
-Controls home security systems
- * Fire dedection and alarm.
- * Fire extinguisher starter.
- * Locking/Unlocking exterior doors.
+Notes:
+- `reset` is active-low in this design.
+- `top_module` is in `top.v`.

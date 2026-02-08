@@ -26,7 +26,7 @@ module top_module_tb;
     wire unlock_signal;
     wire lock_signal;
     wire alarm_signal;
-    wire alarm;
+    wire fire_alarm;
     wire extinguish;
     wire [1:0] luminosity;
     wire [1:0] color;
@@ -54,6 +54,7 @@ module top_module_tb;
         .unlock_signal(unlock_signal),
         .lock_signal(lock_signal),
         .alarm_signal(alarm_signal),
+        .fire_alarm(fire_alarm),
         .extinguish(extinguish),
         .luminosity(luminosity),
         .color(color)

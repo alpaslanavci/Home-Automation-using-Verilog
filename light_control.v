@@ -62,7 +62,7 @@ localparam LOW_LUMINOSITY  = 2'b01;
 localparam LIGHTS_OFF      = 2'b00;
 
 // Instantiate color_sel to handle color changes
-wire [1:0] selected_color 
+wire [1:0] selected_color;
 color_sel cs(.clk(clk), .reset(reset), .color_button(color_button), .color(selected_color));
 always @ ( posedge clk )
     color <= selected_color;
@@ -72,9 +72,9 @@ always @ ( posedge clk )
 always @(posedge clk) begin
     if (sunlight_sensor < 8'd15)
         luminosity <= HIGH_LUMINOSITY;   // High brightness if sunlight is low
-    else if (sunlight_sensor > 8'd15 & sunlight_sensor < 8'd30)
+    else if (sunlight_sensor > 8'd15 && sunlight_sensor < 8'd30)
         luminosity <= MID_LUMINOSITY;    // Medium brightness range
-    else if (sunlight_sensor > 8'd30 & sunlight_sensor < 8'd50)
+    else if (sunlight_sensor > 8'd30 && sunlight_sensor < 8'd50)
         luminosity <= LOW_LUMINOSITY;    // Low brightness range
     else
         luminosity <= LIGHTS_OFF;        // Default to off
